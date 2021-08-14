@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homepageFragment">
+
+    <fragment
+        android:id="@+id/homepageFragment"
+        android:name="com.example.randomexercise.homepageFragment"
+        android:label="@string/home_title"
+        tools:layout="@layout/fragment_homepage">
+        <action
+            android:id="@+id/action_homepageFragment_to_subjectFragment"
+            app:destination="@id/subjectFragment" />
+        <action
+            android:id="@+id/action_homepageFragment_to_updateFragment2"
+            app:destination="@id/updateFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.randomexercise.exerciseFragment"
+        android:label="@string/exercise_title"
+        tools:layout="@layout/fragment_exercise" >
+        <argument
+            android:name="subject"
+            app:argType="string" />
+        <argument
+            android:name="mode"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_exerciseFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment"
+            app:popUpTo="@id/homepageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/subjectFragment"
+        android:name="com.example.randomexercise.subjectFragment"
+        android:label="@string/subject_title"
+        tools:layout="@layout/fragment_subject">
+        <action
+            android:id="@+id/action_subjectFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+        <argument
+            android:name="mode"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment2"
+        android:name="com.example.randomexercise.updateFragment"
+        android:label="@string/update_title"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment2_to_addExFragment"
+            app:destination="@id/addExFragment" />
+        <action
+            android:id="@+id/action_updateFragment2_to_detailFragment2"
+            app:destination="@id/detailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExFragment"
+        android:name="com.example.randomexercise.AddExFragment"
+        android:label="新增題目"
+        tools:layout="@layout/fragment_add_ex">
+        <action
+            android:id="@+id/action_addExFragment_to_updateFragment2"
+            app:destination="@id/updateFragment2"
+            app:popUpTo="@id/updateFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment2"
+        android:name="com.example.randomexercise.detailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/action_detailFragment2_to_updateFragment2"
+            app:destination="@id/updateFragment2" />
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
+</navigation>
